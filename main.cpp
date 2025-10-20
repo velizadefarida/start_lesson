@@ -23,6 +23,10 @@ void remove (int **m, size_t rows, size_t cols) {
   }
 }
 
+int ** create (size_t rows, size_t cols) {
+  int ** result = nullptr;
+
+
 int main()
 {
   size_t rows = 0, cols = 0;
