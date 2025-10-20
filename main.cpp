@@ -18,10 +18,11 @@ void output (const int * const * m, size_t rows, size_t cols) {
   std::cout << rows << " " << cols;
 }
 
-void remove (int **m, size_t rows, size_t cols) {
+void remove (int **m, size_t rows) {
   for (size_t i = 0; i < rows; ++i) {
     delete[] m[i];
   }
+  delete [] m;
 }
 
 int ** create (size_t rows, size_t cols) {
@@ -49,10 +50,10 @@ int main()
   int ** m = create (rows, cols);
   input (m, rows, cols);
   if (!std::cin) {
-    remove(m, rows, cols);
+    remove(m, rows);
     return 1;
   }
   output (m, rows, cols);
-  remove (m, rows, cols);
+  remove (m, rows);
   std::cout << "\n";
 }
