@@ -1,3 +1,4 @@
+
 #include <iostream>
 
 int ** create (size_t rows, size_t cols);
@@ -18,14 +19,25 @@ void output (const int * const * m, size_t rows, size_t cols) {
 }
 
 void remove (int **m, size_t rows, size_t cols) {
-  for (size_t i = 0; i < rows, ++i) {
+  for (size_t i = 0; i < rows; ++i) {
     delete[] m[i];
   }
 }
 
 int ** create (size_t rows, size_t cols) {
-  int ** result = nullptr;
-
+  int ** result = new int*[rows];
+  size_t i = 0;
+  try {
+    for (; i < rows; ++i) {
+      result[i] = new int[cols];
+    }
+  }
+  catch (...) {
+    remove (result, i);;
+    throw;
+  }
+  return result;
+}
 
 int main()
 {
